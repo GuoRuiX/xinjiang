@@ -1,0 +1,25 @@
+server:
+  port: 8092
+  servlet:
+    context-path: /credit-information-services
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://121.36.83.243:3306/credit-information-service?characterEncoding=utf8&useSSL=false
+      username: root
+      password: Rjhc@1234
+  rabbitmq: #rabbitmq\u914D\u7F6E
+    host: 123.57.60.77
+    port: 5672
+    username: admin
+    password: Rjhc@1234
+    publisher-confirm-type: correlated #\u5F00\u542FConfirmCallback\u56DE\u8C03
+    publisher-returns: true #\u5F00\u542FReturnCallback\u56DE\u8C03
+    template:
+      mandatory: true #\u6D88\u606F\u53D1\u9001\u5230\u4EA4\u6362\u673A\u786E\u8BA4\u673A\u5236\u65F6\u4F7F\u7528
+    listener:
+      type: simple #\u5BB9\u5668\u7C7B\u578B
+      simple:
+        acknowledge-mode: manual #\u6D88\u8D39\u8005\u7AEF\u624B\u52A8akc\u786E\u8BA4
